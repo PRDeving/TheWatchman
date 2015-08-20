@@ -1,0 +1,43 @@
+#!/bin/sh
+
+FILE="$HOME/.config/thewatchman.conf"
+
+if [ -f $FILE ]; then
+    echo "conf file already exists, do you want to configure again?(y/n)"
+    read OPT
+    if [ $OPT == "n" ]; then
+        exit
+    fi
+fi
+
+
+echo "### TheWatchman Configurator ###"
+echo "Server name: (Default)"
+read MID;
+echo "Host to send data (with http://): (http://localhost)"
+read HOST;
+echo "Get variable name for data: (json)"
+read GETVAR;
+echo "Interval between signals (miliseconds): (100)"
+read INTERVAL;
+
+echo "Creating config file in $HOME/.config/thewatchman.conf"
+echo "## CONFIGURATION ##" > $FILE
+if [ $MID ]; then
+    echo "MID $MID" >> $FILE
+fi
+if [ $HOST ]; then
+    echo "URL $HOST" >> $FILE
+fi
+if [ $GETVAR ]; then
+    echo "GET_NAME $GETVAR" >> $FILE
+fi
+if [ $INTERVAL ]; then
+    echo "INTERVAL $INTERVAL" >> $FILE
+fi
+
+if [ -f $FILE ]; then
+    echo "Configuration file succesfully created."
+else
+    echo "Error while trying to write Conf file."
+fi
