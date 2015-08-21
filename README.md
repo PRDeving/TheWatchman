@@ -38,6 +38,17 @@ There's an application folder that contents some sample files that stores the ge
 
 Just host the application folder somewhere publicly and point to the hellomachine.php script once you are configuring the server daemon.
 
+**UNINSTALL**
+To remove TheWatchman you have to kill your son and offer him to the gods...nah, srsly:
+
+The files TheWatchman installs are:
+* /usr/bin/thewatchman
+* /usr/bin/thewatchman-conf
+* ~/.conf/thewatchman.conf
+* ~/thewatchman.log
+
+Just remove them...
+
 **WHAT DO I HAVE TO KNOW?**
 * TheWatchman will use libcurl eventually, i brainfarted so bad trying to make it portable, so, i gonna work in it once the core is stable and works as i want it to.
 * TheWatchman displays data in MB
