@@ -10,7 +10,7 @@ if [ -f $FILE ]; then
     fi
 fi
 
-if [ ! -d "$HOME/.conf/" ]; then
+if [ ! -d "$HOME/.config/" ]; then
     mkdir $HOME/.conf
 fi
 
