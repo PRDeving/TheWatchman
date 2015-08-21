@@ -1,1 +1,1 @@
-{'bitch':{'cpu:'57','totalram':'3846','freeram':'331'}}
+{bitch:{cpu:34,totalram:3846,freeram:1125}}

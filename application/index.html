@@ -1,0 +1,12 @@
+<head>
+</head>
+<body>
+<div id="data"></div>
+<script src="lib/jquery"></script>
+<script>
+    setInterval(function(){
+        $("#data").empty().load("servercall.txt");
+    },1000/100);
+</script>
+</body>
+
