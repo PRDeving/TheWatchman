@@ -11,7 +11,7 @@ if [ -f $FILE ]; then
 fi
 
 if [ ! -d "$HOME/.config/" ]; then
-    mkdir $HOME/.conf
+    mkdir $HOME/.config
 fi
 
 echo "### TheWatchman Configurator ###"
