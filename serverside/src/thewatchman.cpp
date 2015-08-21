@@ -2,6 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -9,7 +10,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <map>
-#include <curl/curl.h>
+// #include <curl/curl.h>
 #include "logger.h"
 using namespace std;
 
@@ -93,7 +94,7 @@ int main(int argc, char* argv[]){
 
     while(true){
         logger.pull();
-        string json = "{'"+Conf["MID"]+"':{" + getCPU()+"," + getRAM() + "}}";
+        string json = "%7B'"+Conf["MID"]+"':%7B" + getCPU()+"," + getRAM() + "%7D%7D";
         postJSON(json);
         usleep(atoi(Conf["INTERVAL"].c_str()));
     }
@@ -113,7 +114,7 @@ string getCPU(){
     struct sysinfo info;
     if (sysinfo(&info) != 0)
         logger.write("sysinfo: error reading system statistics when opening to get CPU usage.");
-    return "'cpu:'"+to_string(info.loads[0]/1000)+"'";
+    return "'cpu':'"+to_string(info.loads[0]/1000)+"'";
 }
 
 string getRAM(){
@@ -129,21 +130,23 @@ string getRAM(){
 
 
 void postJSON(string json){
-    CURL* curl;
-    long response;
+    // CURL* curl;
+    // long response;
     string url = Conf["URL"] + "?"+ Conf["GET_NAME"] +"="+json;
-
-    curl_global_init(CURL_GLOBAL_ALL);
-    curl = curl_easy_init();
-
-    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-    curl_easy_strerror(CURLE_HTTP_RETURNED_ERROR);
-    curl_easy_perform(curl);
-    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response);
-
-    if(response != 200)logger.write("HTTP Error");
-    if(response == 404)logger.write("HTTP 404, service not found");
-
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
+    string gogo = "curl "+url;
+    system(gogo.c_str());
+    //
+    // curl_global_init(CURL_GLOBAL_ALL);
+    // curl = curl_easy_init();
+    //
+    // curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    // curl_easy_strerror(CURLE_HTTP_RETURNED_ERROR);
+    // curl_easy_perform(curl);
+    // curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response);
+    //
+    // if(response != 200)logger.write("HTTP Error");
+    // if(response == 404)logger.write("HTTP 404, service not found");
+    //
+    // curl_easy_cleanup(curl);
+    // curl_global_cleanup();
 }
