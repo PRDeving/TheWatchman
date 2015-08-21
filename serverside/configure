@@ -10,6 +10,9 @@ if [ -f $FILE ]; then
     fi
 fi
 
+if [ ! -d "$HOME/.conf/" ]; then
+    mkdir $HOME/.conf
+fi
 
 echo "### TheWatchman Configurator ###"
 echo "Server name: (Default)"
