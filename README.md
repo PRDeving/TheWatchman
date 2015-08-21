@@ -47,7 +47,8 @@ The files TheWatchman installs are:
 * ~/.conf/thewatchman.conf
 * ~/thewatchman.log
 
-Just remove them...
+Just remove them and stop the daemon with
+`pkill -f thewatchman`
 
 **WHAT DO I HAVE TO KNOW?**
 * TheWatchman will use libcurl eventually, i brainfarted so bad trying to make it portable, so, i gonna work in it once the core is stable and works as i want it to.
