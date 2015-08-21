@@ -18,7 +18,7 @@ You can have the statics in real time anywhere you want to.
 
 TheWatchman needs a configuration file, all configurations files has to start with a commented line (gonna fix it ASAP)
 
-TheWatchman config file will be automaticly created by runing the 'configurate' script or, once installed, runing thewatchman-configurate in your shell;
+TheWatchman config file will be automaticly created by runing the 'configurate' script or, once installed, runing thewatchman-conf in your shell;
 
 The configuration script will lead you by some simple steps to configure the daemon.
 
